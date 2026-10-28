@@ -8,3 +8,4 @@ governance/jml-log.jsonl
 detection/collector/*.json
 __pycache__/
 .venv/
+ldap/bootstrap/*.ldif

@@ -6,3 +6,8 @@ test.acmefin.test {
   import lab_tls
   reverse_proxy whoami:80
 }
+
+ldapadmin.acmefin.test {
+  import lab_tls
+  reverse_proxy phpldapadmin:80
+}
