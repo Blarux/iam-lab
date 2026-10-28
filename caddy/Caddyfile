@@ -1,0 +1,8 @@
+(lab_tls) {
+  tls /certs/acmefin.test.pem /certs/acmefin.test-key.pem
+}
+
+test.acmefin.test {
+  import lab_tls
+  reverse_proxy whoami:80
+}

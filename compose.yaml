@@ -1,0 +1,16 @@
+name: iam-lab
+networks:
+  lab: {}
+services:
+  caddy:
+    image: caddy:2.8
+    ports: ["443:443"]
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./certs:/certs:ro
+    networks:
+      lab:
+        aliases: [sso.acmefin.test, git.acmefin.test, grafana.acmefin.test, cloud.acmefin.test, api.acmefin.test, vault.acmefin.test]
+  whoami:
+    image: traefik/whoami
+    networks: [lab]
