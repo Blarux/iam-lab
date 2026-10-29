@@ -4,6 +4,7 @@ networks:
 volumes:
   ldap_data: {}
   ldap_config: {}
+  pg_data: {}
 services:
   caddy:
     image: caddy:2.8
@@ -31,7 +32,7 @@ services:
       - ./ldap/bootstrap:/container/service/slapd/assets/config/bootstrap/ldif/custom
       - ldap_data:/var/lib/ldap
       - ldap_config:/etc/ldap/slapd.d
-    ports: ["127.0.0.1:389:389"]   # accessible depuis ton PC seulement, pas depuis le réseau
+    ports: ["127.0.0.1:389:389"]
     networks: [lab]
   phpldapadmin:
     image: osixia/phpldapadmin:0.9.0
@@ -39,4 +40,27 @@ services:
       PHPLDAPADMIN_LDAP_HOSTS: openldap
       PHPLDAPADMIN_HTTPS: "false"
     depends_on: [openldap]
+    networks: [lab]
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+    volumes: [pg_data:/var/lib/postgresql/data]
+    networks: [lab]
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+      KC_HOSTNAME: https://sso.acmefin.test    # l'adresse publique, celle qui figurera dans les jetons
+      KC_HTTP_ENABLED: "true"                  # HTTP uniquement entre Caddy et Keycloak
+      KC_PROXY_HEADERS: xforwarded             # Keycloak lit les en-têtes X-Forwarded-* de Caddy
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_ADMIN_PASSWORD}
+    depends_on: [postgres, openldap]
     networks: [lab]
