@@ -16,3 +16,13 @@ sso.acmefin.test {
   import lab_tls
   reverse_proxy keycloak:8080
 }
+
+git.acmefin.test {
+  import lab_tls
+  reverse_proxy gitea:3000
+}
+
+grafana.acmefin.test {
+  import lab_tls
+  reverse_proxy grafana:3000
+}

@@ -27,3 +27,7 @@ Chaque groupe donne un rôle. On n'attribue jamais un rôle directement à une p
 | chloe.dubois | grp-dev | Utilisatrice standard, future mutation |
 | david.moreau | grp-it-admin | Administrateur, accès à srv-01 |
 | emma.petit | grp-rh | Future salariée sur le départ |
+
+## Écarts connus
+
+- Gitea : tout salarié authentifié peut se connecter, alors que la matrice le réserve à dev, dev-lead et it-admin. Correction prévue à l'étape 7 (flux Keycloak dédié au client gitea).
