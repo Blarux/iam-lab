@@ -31,3 +31,8 @@ cloud.acmefin.test {
   import lab_tls
   reverse_proxy nextcloud:80
 }
+
+api.acmefin.test {
+  import lab_tls
+  reverse_proxy api:8000
+}

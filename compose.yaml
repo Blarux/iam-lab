@@ -122,3 +122,10 @@ services:
       TRUSTED_PROXIES: 172.16.0.0/12                   # il fait confiance aux en-têtes de Caddy
     volumes: [nextcloud_data:/var/www/html]
     networks: [lab]
+  api:
+    build: ./apps/api
+    environment:
+      SSL_CERT_FILE: /certs/rootCA.pem          # pour télécharger les clés de Keycloak en HTTPS
+    volumes:
+      - ./certs/rootCA.pem:/certs/rootCA.pem:ro
+    networks: [lab]
