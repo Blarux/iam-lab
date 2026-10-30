@@ -1,0 +1,10 @@
+  - 1:
+    - general-uid_mapping: username
+    - general-idp0_display_name: AcmeFin SSO
+    - idp-entityId: https://sso.acmefin.test/realms/acmefin
+    - idp-singleSignOnService.url: https://sso.acmefin.test/realms/acmefin/protocol/saml
+    - idp-singleLogoutService.url: https://sso.acmefin.test/realms/acmefin/protocol/saml
+    - idp-x509cert: MIICnTCCAYUCBgGhhsTIYzANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdhY21lZmluMB4XDTI2MTAyOTA4MjUwNVoXDTM2MTAyOTA4MjY0NVowEjEQMA4GA1UEAwwHYWNtZWZpbjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANCHvHg9NVy7aAnnyXFnVGFACMKqDCEhVZvNohyTbDPLrtZzP4XtxhidijjGnkHMqr0lh2r9xF2Z8jGCJJtZbscuag/AX4PzLIlbWpUBhxJI0G1gC0jIuJaXsdimUrQZyLdHgVAr25AKy3vLFVax4llcGAhjRqDZvA9A5HEci0dwtsH0zUCcxOCF2ehseowkd5f5RYm1mjcGLBTY7UhWFbBB2kLvWW3gwPdBv0VLapuZ0a08FSKn5jcwLNGuXEL9VmG+gWruOj319clvQPDGbeO9Yz2vllw+CFHbP2Pd2L35C+DlbQ6ve0s8iPniqTelk8/7JS7ORkPea2iMvsogp70CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAeFHHlMgokZF+ZQsYGwlpO/78gTVvwpdMTnHkyM7MzuJtmL2gDxYtncC2RMxmgkL6/FT9V84Xns3cw7ZDPMr0yAWqcBEGtPV4kRC3nrSs8TUAaFpnbbzqLkYoMki2lQZH2wAmjpmtF/4/ZfPqFNiNYbzS6pEWucrsg0Y42Ez8oz64Ov7/w4QUTiLDc2Dj3u98zmhGcxV0rjK7inB/izgWhS/hHOvKhCP8e6BGqs5zhK4xI11EfDp//Sda8vHHf0/+45t3zUbNnTZmb7K3Sr4c8bwzQZpyKU4fLkjbdEauGoCH2j/CoWy6+QlLhjdyrxOsb4PJQh4M6+fdqxCbF9LNcw==
+    - saml-attribute-mapping-displayName_mapping: displayName
+    - saml-attribute-mapping-email_mapping: email
+    - saml-attribute-mapping-group_mapping: Role

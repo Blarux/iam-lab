@@ -26,3 +26,8 @@ grafana.acmefin.test {
   import lab_tls
   reverse_proxy grafana:3000
 }
+
+cloud.acmefin.test {
+  import lab_tls
+  reverse_proxy nextcloud:80
+}

@@ -31,3 +31,4 @@ Chaque groupe donne un rôle. On n'attribue jamais un rôle directement à une p
 ## Écarts connus
 
 - Gitea : tout salarié authentifié peut se connecter, alors que la matrice le réserve à dev, dev-lead et it-admin. Correction prévue à l'étape 7 (flux Keycloak dédié au client gitea).
+- Nextcloud : l'attribut Role transmet tous les rôles de l'utilisateur (default-roles-acmefin, offline_access, rôles du client account…), et Nextcloud en fait des groupes. Correction prévue à l'étape 7 (Full scope allowed désactivé, seuls les rôles métier utiles transmis).
