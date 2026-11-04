@@ -1,0 +1,51 @@
+uid,prenom,nom,service,poste,groupes,statut
+alice.martin,Alice,Martin,Finance,Comptable,grp-finance-saisie,actif
+bruno.leroy,Bruno,Leroy,Finance,Contrôleur financier,grp-finance-validation,actif
+chloe.dubois,Chloé,Dubois,Développement,Développeuse,grp-dev,actif
+david.moreau,David,Moreau,IT,Administrateur systèmes,grp-it-admin,actif
+emma.petit,Emma,Petit,RH,Chargée RH,grp-rh,actif
+lucas.bernard,Lucas,Bernard,RH,Chargé RH,grp-rh,actif
+ines.garcia,Inès,Garcia,RH,Chargé RH,grp-rh,actif
+theo.durand,Théo,Durand,RH,Chargé RH,grp-rh,actif
+lucas.faure,Lucas,Faure,RH,Chargé RH,grp-rh,actif
+manon.andre,Manon,Andre,Finance,Comptable,grp-finance-saisie,actif
+maxime.thomas,Maxime,Thomas,Finance,Comptable,grp-finance-saisie,actif
+lea.robert,Léa,Robert,Finance,Comptable,grp-finance-saisie,actif
+sarah.garcia,Sarah,Garcia,Finance,Comptable,grp-finance-saisie,actif
+pauline.mercier,Pauline,Mercier,Finance,Comptable,grp-finance-saisie,actif
+lea.faure,Léa,Faure,Finance,Comptable,grp-finance-saisie,actif
+sarah.faure,Sarah,Faure,Finance,Comptable,grp-finance-saisie,actif
+maxime.garcia,Maxime,Garcia,Finance,Comptable,grp-finance-saisie,actif
+laura.andre,Laura,Andre,Finance,Comptable,grp-finance-saisie,actif
+ines.bernard,Inès,Bernard,Finance,Contrôleur financier,grp-finance-validation,actif
+nathan.fontaine,Nathan,Fontaine,Finance,Contrôleur financier,grp-finance-validation,actif
+julie.roux,Julie,Roux,Finance,Contrôleur financier,grp-finance-validation,actif
+camille.michel,Camille,Michel,Finance,Contrôleur financier,grp-finance-validation,actif
+julie.richard,Julie,Richard,Développement,Développeur,grp-dev,actif
+manon.lambert,Manon,Lambert,Développement,Développeur,grp-dev,actif
+lucas.bonnet,Lucas,Bonnet,Développement,Développeur,grp-dev,actif
+paul.mercier,Paul,Mercier,Développement,Développeur,grp-dev,actif
+ines.thomas,Inès,Thomas,Développement,Développeur,grp-dev,actif
+laura.faure,Laura,Faure,Développement,Développeur,grp-dev,actif
+lucas.lambert,Lucas,Lambert,Développement,Développeur,grp-dev,actif
+manon.faure,Manon,Faure,Développement,Développeur,grp-dev,actif
+louis.mercier,Louis,Mercier,Développement,Développeur,grp-dev,actif
+paul.andre,Paul,Andre,Développement,Développeur,grp-dev,actif
+sarah.robert,Sarah,Robert,Développement,Développeur,grp-dev,actif
+hugo.garcia,Hugo,Garcia,Développement,Développeur,grp-dev,actif
+louis.robert,Louis,Robert,Développement,Développeur,grp-dev,actif
+theo.richard,Théo,Richard,Développement,Développeur,grp-dev,actif
+clara.roux,Clara,Roux,Développement,Développeur,grp-dev,actif
+laura.bonnet,Laura,Bonnet,Développement,Développeur,grp-dev,actif
+nathan.bonnet,Nathan,Bonnet,Développement,Lead développeur,grp-dev;grp-dev-lead,actif
+paul.michel,Paul,Michel,Développement,Lead développeur,grp-dev;grp-dev-lead,actif
+ines.robert,Inès,Robert,Développement,Lead développeur,grp-dev;grp-dev-lead,actif
+yanis.lefebvre,Yanis,Lefebvre,IT,Technicien support,grp-it-support,actif
+julien.garcia,Julien,Garcia,IT,Technicien support,grp-it-support,actif
+nathan.rousseau,Nathan,Rousseau,IT,Technicien support,grp-it-support,actif
+clara.roux2,Clara,Roux,IT,Technicien support,grp-it-support,actif
+julien.garcia2,Julien,Garcia,IT,Technicien support,grp-it-support,actif
+julie.thomas,Julie,Thomas,IT,Technicien support,grp-it-support,actif
+theo.thomas,Théo,Thomas,IT,Technicien support,grp-it-support,actif
+julie.lambert,Julie,Lambert,IT,Administrateur systèmes,grp-it-admin,actif
+ines.robert2,Inès,Robert,IT,Administrateur systèmes,grp-it-admin,actif

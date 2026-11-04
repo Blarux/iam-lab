@@ -80,7 +80,7 @@ os.makedirs("ldap/bootstrap", exist_ok=True)
 with open("ldap/bootstrap/50-acmefin.ldif", "w", encoding="utf-8") as f:
     f.write("\n".join(out))
 with open("governance/hr/rh.csv", "w", newline="", encoding="utf-8") as f:
-    w = csv.writer(f)
+    w = csv.writer(f, lineterminator="\n")
     w.writerow(["uid", "prenom", "nom", "service", "poste", "groupes", "statut"])
     for p in people:
         w.writerow([p["uid"], p["prenom"], p["nom"], p["service"], p["poste"], ";".join(p["groupes"]), "actif"])
