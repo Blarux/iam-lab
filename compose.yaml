@@ -129,3 +129,17 @@ services:
     volumes:
       - ./certs/rootCA.pem:/certs/rootCA.pem:ro
     networks: [lab]
+  openbao:
+    image: quay.io/openbao/openbao:2.1.0
+    command: ["server", "-dev", "-dev-listen-address=0.0.0.0:8200", "-dev-root-token-id=${BAO_ROOT_TOKEN}"]
+    cap_add: [IPC_LOCK]
+    ports: ["127.0.0.1:8250:8250"]
+    volumes:
+      - ./certs/rootCA.pem:/certs/rootCA.pem:ro
+    networks: [lab]
+  srv-01:
+    build: ./pam/srv-01
+    volumes:
+      - ./pam/srv-01/trusted-user-ca.pem:/etc/ssh/trusted-user-ca.pem:ro
+    ports: ["127.0.0.1:2222:22"]
+    networks: [lab]
