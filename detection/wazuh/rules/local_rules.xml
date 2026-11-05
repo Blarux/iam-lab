@@ -1,0 +1,93 @@
+<!-- Règles de détection IAM AcmeFin : événements Keycloak -->
+<group name="keycloak,iam,">
+
+  <!-- Base : événements utilisateur -->
+  <rule id="100100" level="3">
+    <decoded_as>json</decoded_as>
+    <field name="source">^keycloak$</field>
+    <description>Keycloak : $(type) pour l'utilisateur $(userId)</description>
+  </rule>
+
+  <rule id="100101" level="0">
+    <if_sid>100100</if_sid>
+    <field name="type">^CLIENT_LOGIN$</field>
+    <description>Keycloak : jeton demandé par un compte de service (bruit ignoré)</description>
+  </rule>
+
+  <rule id="100102" level="5">
+    <if_sid>100100</if_sid>
+    <field name="type">^LOGIN_ERROR$</field>
+    <description>Keycloak : échec de connexion pour l'utilisateur $(userId) ($(error))</description>
+  </rule>
+
+  <!-- Échec du second facteur : le champ selected_credential_id est présent -->
+  <rule id="100103" level="6">
+    <if_sid>100102</if_sid>
+    <field name="details.selected_credential_id" type="pcre2">.+</field>
+    <description>Keycloak : échec du second facteur pour l'utilisateur $(userId)</description>
+  </rule>
+
+  <!-- R3 : compte inconnu ou désactivé, par exemple un ancien salarié -->
+  <rule id="100104" level="8">
+    <if_sid>100102</if_sid>
+    <field name="error">^user_not_found$|^user_disabled$</field>
+    <description>R3 : tentative de connexion avec un compte inexistant ou désactivé ($(details.username))</description>
+    <mitre><id>T1078</id></mitre>
+  </rule>
+
+  <!-- Verrouillage temporaire déclenché par la détection de force brute de Keycloak -->
+  <rule id="100105" level="10">
+    <if_sid>100100</if_sid>
+    <field name="type">^USER_DISABLED_BY_TEMPORARY_LOCKOUT$</field>
+    <description>Keycloak : compte $(userId) verrouillé après des échecs répétés</description>
+    <mitre><id>T1110</id></mitre>
+  </rule>
+
+  <!-- R4 : refresh token refusé (rejoué, expiré ou révoqué) -->
+  <rule id="100106" level="8">
+    <if_sid>100100</if_sid>
+    <field name="type">^REFRESH_TOKEN_ERROR$</field>
+    <description>R4 : refresh token refusé pour le client $(clientId) ($(error))</description>
+    <mitre><id>T1550.001</id></mitre>
+  </rule>
+
+  <!-- R1 : pulvérisation de mots de passe = des comptes différents, depuis la même adresse, en peu de temps -->
+  <rule id="100110" level="12" frequency="5" timeframe="120" ignore="300">
+    <if_matched_sid>100102</if_matched_sid>
+    <same_field>ipAddress</same_field>
+    <different_field>userId</different_field>
+    <description>R1 : pulvérisation de mots de passe probable depuis $(ipAddress)</description>
+    <mitre><id>T1110.003</id></mitre>
+  </rule>
+
+  <!-- R2 : mot de passe connu, second facteur en échec répété = identifiants probablement volés -->
+  <rule id="100111" level="10" frequency="3" timeframe="300" ignore="300">
+    <if_matched_sid>100103</if_matched_sid>
+    <same_field>userId</same_field>
+    <description>R2 : échecs répétés du second facteur pour $(userId) : mot de passe probablement compromis</description>
+    <mitre><id>T1078</id><id>T1621</id></mitre>
+  </rule>
+
+  <!-- Base : événements d'administration -->
+  <rule id="100130" level="3">
+    <decoded_as>json</decoded_as>
+    <field name="source">^keycloak-admin$</field>
+    <description>Keycloak : action d'administration $(operationType) sur $(resourceType)</description>
+  </rule>
+
+  <!-- R5 : rôle attribué directement dans la console. Le processus normal passe par les groupes LDAP. -->
+  <rule id="100131" level="8">
+    <if_sid>100130</if_sid>
+    <field name="resourceType">^REALM_ROLE_MAPPING$</field>
+    <field name="operationType">^CREATE$</field>
+    <description>R5 : rôle attribué manuellement hors processus ($(resourcePath))</description>
+    <mitre><id>T1098</id></mitre>
+  </rule>
+
+  <rule id="100132" level="12">
+    <if_sid>100131</if_sid>
+    <field name="representation">it-admin|finance-validation</field>
+    <description>R5 : rôle SENSIBLE attribué manuellement hors processus ($(resourcePath))</description>
+    <mitre><id>T1098</id></mitre>
+  </rule>
+</group>

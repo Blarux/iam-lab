@@ -143,3 +143,14 @@ services:
       - ./pam/srv-01/trusted-user-ca.pem:/etc/ssh/trusted-user-ca.pem:ro
     ports: ["127.0.0.1:2222:22"]
     networks: [lab]
+  collector:
+    build: ./detection/collector
+    user: "1000:1000"                          # ton utilisateur Linux : il peut écrire dans detection/events
+    environment:
+      COLLECTOR_SECRET: ${COLLECTOR_SECRET}
+      REQUESTS_CA_BUNDLE: /certs/rootCA.pem
+    volumes:
+      - ./certs/rootCA.pem:/certs/rootCA.pem:ro
+      - ./detection/events:/var/log/keycloak-events
+    restart: unless-stopped
+    networks: [lab]
