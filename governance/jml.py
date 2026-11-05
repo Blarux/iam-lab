@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Processus JML : applique les arrivées, mutations et départs du fichier RH.
 Simulation par défaut ; l'option --apply applique réellement les changements."""
+import subprocess
+import os as _os
+_os.environ.setdefault("REQUESTS_CA_BUNDLE", "certs/rootCA.pem")  # AC du lab, même sans export
 import csv, datetime, json, os, secrets, sys
 
 import requests
@@ -59,6 +62,8 @@ def kc_sessions(uid, disable=False):
     h = {"Authorization": f"Bearer {tok.json()['access_token']}"}
     users = requests.get(f"{KC}/admin/realms/{REALM}/users", headers=h,
                          params={"username": uid, "exact": "true"}).json()
+    if not users:
+        log("KC_INTROUVABLE", uid, status=404)
     for u in users:
         if disable:
             r = requests.put(f"{KC}/admin/realms/{REALM}/users/{u['id']}", json={"enabled": False}, headers=h)
@@ -81,13 +86,16 @@ for row in csv.DictReader(open("governance/hr/rh.csv", encoding="utf-8")):
         if before is not None:                                        # LEAVER
             log("LEAVER", uid, groupes_retires=sorted(before))
             if APPLY:
+                # 1. Applications d'abord, tant que Keycloak voit encore le compte dans l'annuaire
+                kc_sessions(uid, disable=True)
+                nextcloud_disable(uid)
+                # 2. Puis l'annuaire
                 for g in before:
                     set_membership(uid, g, MODIFY_DELETE)
                 ldap.modify(dn(uid), {"userPassword": [(MODIFY_DELETE, [])]})   # plus aucun mot de passe valide
                 ldap_ok(uid, "suppression du mot de passe")
                 ldap.modify_dn(dn(uid), f"uid={uid}", new_superior=DEPARTS)
                 ldap_ok(uid, "déplacement vers ou=departs")
-                kc_sessions(uid, disable=True)
         continue
 
     if any(pair <= target for pair in INCOMPATIBLES):                 # séparation des tâches
