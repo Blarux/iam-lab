@@ -10,3 +10,4 @@ __pycache__/
 .venv/
 ldap/bootstrap/*.ldif
 detection/events/
+*.bak

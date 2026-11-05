@@ -1,0 +1,11 @@
+{"time": "2026-11-05T17:43:51", "action": "LEAVER", "uid": "bruno.leroy", "applied": false, "groupes_retires": ["grp-finance-validation"]}
+{"time": "2026-11-05T17:44:22", "action": "LEAVER", "uid": "bruno.leroy", "applied": true, "groupes_retires": ["grp-finance-validation"]}
+{"time": "2026-11-05T18:02:18", "action": "LEAVER", "uid": "chloe.dubois", "applied": false, "groupes_retires": ["grp-finance-saisie"]}
+{"time": "2026-11-05T18:02:50", "action": "LEAVER", "uid": "chloe.dubois", "applied": true, "groupes_retires": ["grp-finance-saisie"]}
+{"time": "2026-11-05T18:05:10", "action": "LEAVER", "uid": "chloe.dubois", "applied": false, "groupes_retires": ["grp-finance-saisie"]}
+{"time": "2026-11-05T18:05:14", "action": "LEAVER", "uid": "chloe.dubois", "applied": true, "groupes_retires": ["grp-finance-saisie"]}
+{"time": "2026-11-05T18:05:57", "action": "LEAVER", "uid": "chloe.dubois", "applied": false, "groupes_retires": ["grp-finance-saisie"]}
+{"time": "2026-11-05T18:06:01", "action": "LEAVER", "uid": "chloe.dubois", "applied": true, "groupes_retires": ["grp-finance-saisie"]}
+{"time": "2026-11-05T18:06:01", "action": "KC_DESACTIVATION", "uid": "chloe.dubois", "applied": true, "status": 204}
+{"time": "2026-11-05T18:06:01", "action": "KC_SESSIONS_FERMEES", "uid": "chloe.dubois", "applied": true, "status": 204}
+{"time": "2026-11-05T18:06:03", "action": "NEXTCLOUD_DESACTIVATION", "uid": "chloe.dubois", "applied": true, "status": 0, "message": "The specified user is disabled"}

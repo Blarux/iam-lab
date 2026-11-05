@@ -1,7 +1,7 @@
 uid,prenom,nom,service,poste,groupes,statut
 alice.martin,Alice,Martin,Finance,Comptable,grp-finance-saisie,actif
-bruno.leroy,Bruno,Leroy,Finance,Contrôleur financier,grp-finance-validation,actif
-chloe.dubois,Chloé,Dubois,Finance,Comptable,grp-finance-saisie,actif
+bruno.leroy,Bruno,Leroy,Finance,Contrôleur financier,grp-finance-validation,parti
+chloe.dubois,Chloé,Dubois,Finance,Comptable,grp-finance-saisie,parti
 david.moreau,David,Moreau,IT,Administrateur systèmes,grp-it-admin,actif
 emma.petit,Emma,Petit,RH,Chargée RH,grp-rh,parti
 lucas.bernard,Lucas,Bernard,RH,Chargé RH,grp-rh,actif

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+until curl -sf --cacert certs/rootCA.pem https://sso.acmefin.test/realms/acmefin/.well-known/openid-configuration >/dev/null; do echo "En attente de Keycloak..."; sleep 3; done; echo "Keycloak prêt"
 # Configure OpenBao. Mode développement : à relancer après chaque redémarrage du conteneur.
 set -euo pipefail
 cd "$(dirname "$0")/.."
