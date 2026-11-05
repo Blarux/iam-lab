@@ -1,9 +1,9 @@
 uid,prenom,nom,service,poste,groupes,statut
 alice.martin,Alice,Martin,Finance,Comptable,grp-finance-saisie,actif
 bruno.leroy,Bruno,Leroy,Finance,Contrôleur financier,grp-finance-validation,actif
-chloe.dubois,Chloé,Dubois,Développement,Développeuse,grp-dev,actif
+chloe.dubois,Chloé,Dubois,Finance,Comptable,grp-finance-saisie,actif
 david.moreau,David,Moreau,IT,Administrateur systèmes,grp-it-admin,actif
-emma.petit,Emma,Petit,RH,Chargée RH,grp-rh,actif
+emma.petit,Emma,Petit,RH,Chargée RH,grp-rh,parti
 lucas.bernard,Lucas,Bernard,RH,Chargé RH,grp-rh,actif
 ines.garcia,Inès,Garcia,RH,Chargé RH,grp-rh,actif
 theo.durand,Théo,Durand,RH,Chargé RH,grp-rh,actif
@@ -49,3 +49,4 @@ julie.thomas,Julie,Thomas,IT,Technicien support,grp-it-support,actif
 theo.thomas,Théo,Thomas,IT,Technicien support,grp-it-support,actif
 julie.lambert,Julie,Lambert,IT,Administrateur systèmes,grp-it-admin,actif
 ines.robert2,Inès,Robert,IT,Administrateur systèmes,grp-it-admin,actif
+frank.garnier,Frank,Garnier,Développement,Développeur,grp-dev,actif
