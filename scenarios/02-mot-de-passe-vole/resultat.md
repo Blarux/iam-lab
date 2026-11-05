@@ -59,5 +59,5 @@ R2 se déclenche sur le 3e échec, 22 s après celui-ci.
 5. **Observation : au-delà du seuil, chaque échec reverrouille le compte.** Le compteur ne revient à zéro qu'après une connexion réussie, un déverrouillage par l'administrateur ou 12 h d'attente (Failure Reset Time). Pendant le contre-essai, le compteur d'Alice était resté au-dessus de 5 : chaque échec l'a reverrouillée pour 1 minute (Wait Increment).
 
 ## Preuves du contre-essai
-- captures/5-wazuh-contre-essai.png — trois lots distincts, R2 à 15:50:04
+- captures/5-wazuh-contre-essai.png (capture non conservée) — trois lots distincts, R2 à 15:50:04
 - evenements-contre-essai.jsonl
